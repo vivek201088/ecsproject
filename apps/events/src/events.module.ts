@@ -6,6 +6,7 @@ import { EventSchema } from './schema/event.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { JwtAuthModule } from 'libs/common/src/auth/jwt-auth.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -13,7 +14,8 @@ import { JwtAuthModule } from 'libs/common/src/auth/jwt-auth.module';
   }), MongooseModule.forFeature([
     { name: Event.name, schema: EventSchema },
   ]), DatabaseModule,
-   JwtAuthModule,],
+   JwtAuthModule,
+   OrderModule,],
   controllers: [EventsController],
   providers: [EventsService],
 })
